@@ -303,12 +303,34 @@
                 },
                 {
                     "name": "",
+                    "id": "83929586-b23d-42f6-8145-aec83e54f362",
+                    "path": "<XRController>{RightHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grip Axis (R)",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "18cc7b36-9020-491f-a685-23744d613497",
                     "path": "<XRController>{RightHand}/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Trigger Axis (R)",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "594b5230-a7f5-4520-a346-ec14ffb60baa",
+                    "path": "<XRController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grip Axis (L)",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -386,28 +408,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Haptic (L)",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ad691c4c-a78f-4dc8-9a4e-8368031f963b",
-                    "path": "<XRController>{RightHand}/grip",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Grip Axis (R)",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1e323d3f-f5be-4181-b9f1-6ced536fcab9",
-                    "path": "<XRController>{LeftHand}/grip",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Grip Axis (L)",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

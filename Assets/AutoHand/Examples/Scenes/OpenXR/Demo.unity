@@ -403,6 +403,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone
       objectReference: {fileID: 0}
+    - target: {fileID: 4386901544988388829, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: instantGrab
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386901544988388829, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: useGentleGrab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386901544988388829, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: singleHandOnly
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4386901545127764648, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
       propertyPath: m_Mesh
@@ -1092,6 +1107,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 778010676556682180, guid: f13bbbc9578242a44953eec81cfb27d4,
+        type: 3}
+      propertyPath: maxRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 978722647479649263, guid: f13bbbc9578242a44953eec81cfb27d4,
+        type: 3}
+      propertyPath: maxMoveSpeed
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7668830299185360540, guid: f13bbbc9578242a44953eec81cfb27d4,
         type: 3}
       propertyPath: m_LocalPosition.x
