@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/AutoHand/Examples/Scenes/OpenXR/Demo.unity
+    path: Assets/CartellaProgettoPrincipale/Scena/Demo.unity
     guid: 1551acbe06158c74e8ab2f58f9b373dc
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 6b23a051e0667b74b9e31d6c1876cf93,

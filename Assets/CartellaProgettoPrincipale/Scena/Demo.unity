@@ -434,6 +434,16 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4386901545127764652, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: useGentleGrab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386901545127764652, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: singleHandOnly
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4386901545127764655, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
       propertyPath: m_LocalScale.x
