@@ -343,6 +343,21 @@ PrefabInstance:
       propertyPath: toRange.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4386901543508381207, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: nameCompareType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386901543508381207, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: placeNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386901543508381207, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: placeNames.Array.data[0]
+      value: Scarpa
+      objectReference: {fileID: 0}
     - target: {fileID: 4386901543737213275, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
       propertyPath: m_RootOrder
@@ -418,6 +433,11 @@ PrefabInstance:
       propertyPath: singleHandOnly
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4386901545127764640, guid: 5e50eba45ef63694ab6dad66efcbb007,
+        type: 3}
+      propertyPath: m_TagString
+      value: Scarpa
+      objectReference: {fileID: 0}
     - target: {fileID: 4386901545127764648, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
       propertyPath: m_Mesh
@@ -462,17 +482,17 @@ PrefabInstance:
     - target: {fileID: 4386901545127764655, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.384
+      value: -2.3846
       objectReference: {fileID: 0}
     - target: {fileID: 4386901545127764655, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9067
+      value: 0.911
       objectReference: {fileID: 0}
     - target: {fileID: 4386901545127764655, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.179
+      value: 5.1708
       objectReference: {fileID: 0}
     - target: {fileID: 4386901545127764655, guid: 5e50eba45ef63694ab6dad66efcbb007,
         type: 3}
