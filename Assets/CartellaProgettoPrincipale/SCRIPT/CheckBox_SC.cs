@@ -8,6 +8,7 @@ public class CheckBox_SC : MonoBehaviour
     [SerializeField] PlacePoint placePointOne;
     [SerializeField] PlacePoint placePointTwo;
     [SerializeField] HingeJoint jointCheck;
+    public ManagerBoxAndScore_SC managerBoxAndScore;
 
     public bool CheckBoxIsFull()
     {
@@ -27,7 +28,10 @@ public class CheckBox_SC : MonoBehaviour
             {
                 if(CheckBoxIsFull()) 
                 {
-                    print("win");
+                    managerBoxAndScore.BoxComplete();
+                    Destroy(placePointTwo.placedObject.gameObject);
+                    Destroy(placePointOne.placedObject.gameObject);
+                    Destroy(gameObject);
                 }
             }
         }
