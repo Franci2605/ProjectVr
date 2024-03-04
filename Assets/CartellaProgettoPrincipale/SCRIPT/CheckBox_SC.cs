@@ -9,6 +9,7 @@ public class CheckBox_SC : MonoBehaviour
     [SerializeField] PlacePoint placePointTwo;
     [SerializeField] HingeJoint jointCheck;
     public ManagerBoxAndScore_SC managerBoxAndScore;
+    private bool boxComplete = false;
 
     public bool CheckBoxIsFull()
     {
@@ -26,8 +27,9 @@ public class CheckBox_SC : MonoBehaviour
         {
             if(jointCheck.gameObject.transform.rotation.eulerAngles.z<5)
             {
-                if(CheckBoxIsFull()) 
+                if(CheckBoxIsFull() && !boxComplete) 
                 {
+                    boxComplete = true;
                     managerBoxAndScore.BoxComplete();
                     Destroy(placePointTwo.placedObject.gameObject);
                     Destroy(placePointOne.placedObject.gameObject);

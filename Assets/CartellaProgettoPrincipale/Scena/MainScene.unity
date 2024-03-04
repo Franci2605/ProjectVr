@@ -3710,7 +3710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3bf41e8c69ac384a903d4b87e614a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 9000727006865165446, guid: 44a7270f6b0348141bf3a78c4522638b, type: 3}
+  box: {fileID: 7531975012467943091, guid: 44a7270f6b0348141bf3a78c4522638b, type: 3}
   spawnPointer: {x: 0.231, y: 1.2571, z: -3.133}
 --- !u!4 &877104598
 Transform:

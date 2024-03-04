@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ManagerBoxAndScore_SC : MonoBehaviour
 {
-    [SerializeField] CheckBox_SC box;
+    [SerializeField] GameObject box;
     [SerializeField] Vector3 spawnPointer;
 
     private void Start()
@@ -14,16 +14,24 @@ public class ManagerBoxAndScore_SC : MonoBehaviour
 
     private void SpawnBox()
     {
-        Instantiate(box.gameObject,spawnPointer,Quaternion.Euler(0,90,0));
-        box.managerBoxAndScore = this;
+        GameObject tempObjectSpawn = Instantiate(box,spawnPointer,Quaternion.Euler(0,90,0));
+        CheckBox_SC tempCheckBox = tempObjectSpawn.GetComponent<CheckBox_SC>();
+        tempCheckBox.managerBoxAndScore = this;
     }
 
     public void BoxComplete()
     {
+        StartCoroutine(BoxCompleteIEnumerator());
+    }
+
+    public IEnumerator BoxCompleteIEnumerator()
+    {
+        yield return new WaitForSeconds(3);
         //animation
         //add point
         SpawnBox();
         print("point");
     }
+
 
 }
