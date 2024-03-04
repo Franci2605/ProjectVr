@@ -26,7 +26,7 @@ public class ManagerBoxAndScore_SC : MonoBehaviour
 
     public IEnumerator BoxCompleteIEnumerator()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         //animation
         //add point
         SpawnBox();
