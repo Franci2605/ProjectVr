@@ -1,31 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PoolShoes : MonoBehaviour
 {
-   Queue<GameObject> shoes = new Queue<GameObject>();
-   [SerializeField] List<Vector3> spawnPointer;
+    [SerializeField] List<GameObject> shoesRed;
+    [SerializeField] List<GameObject> shoesBlue;
+    [SerializeField] List<GameObject> shoesYellow;
+    [SerializeField] List<GameObject> shoesGrey;
+    [SerializeField] List<Vector3> spawnPointer;
+
 
     private void Start()
     {
         var list = GameObject.FindGameObjectsWithTag("Scarpa");
         foreach (var item in list)
         {
-            shoes.Enqueue(item);
+            switch (LayerMask.LayerToName(item.layer))
+            {
+                case "Blue":
+                    shoesBlue.Add(item);
+                    break;
+                case "Yellow":
+                    shoesYellow.Add(item);
+                    break;
+                case "Red":
+                    shoesRed.Add(item);
+                    break;
+                case "Grey":
+                    shoesGrey.Add(item);
+                    break;
+                default:
+                    break;
+            }
             item.gameObject.SetActive(false);
         }
-        StartCoroutine(test());
     }
 
-    IEnumerator test()
+    public GameObject GetShoes(string layer)
     {
-        for (int i = shoes.Count-1; i > 0; i--) 
-        { 
-            yield return new WaitForSeconds(1);
-            var tempObject = shoes.Dequeue();
-            tempObject.gameObject.SetActive(true);
+        switch (layer)
+        {
+            case "Blue":
+                return shoesBlue[0];
+            case "Yellow":
+                return shoesYellow[0];
+            case "Red":
+                return shoesRed[0];
+            case "Grey":
+                return shoesGrey[0];
+            default:
+                Debug.LogError("layer non disponibile");
+                return null;
         }
     }
+
+
+    public void ReturnShoes(GameObject item)
+    {
+        switch (LayerMask.LayerToName(item.layer))
+        {
+            case "Blue":
+                shoesBlue.Add(item);
+                break;
+            case "Yellow":
+                shoesYellow.Add(item);
+                break;
+            case "Red":
+                shoesRed.Add(item);
+                break;
+            case "Grey":
+                shoesGrey.Add(item);
+                break;
+            default:
+                break;
+        }
+
+        item.SetActive(false);
+    }
+
+    //IEnumerator SpawnShoes()
+    //{
+
+    //}
 
 }
