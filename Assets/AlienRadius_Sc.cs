@@ -12,23 +12,20 @@ public class AlienRadius_Sc : MonoBehaviour
 
     private Mesh meshReference;
     List<MagneticBody> magneticBodies = new List<MagneticBody>();
-    float radiusScale;
 
     private void Start()
     {
-        radiusScale = transform.lossyScale.x < transform.lossyScale.y ? transform.lossyScale.x : transform.lossyScale.y;
-        radiusScale = radiusScale < transform.lossyScale.z ? radiusScale : transform.lossyScale.z;
+        meshReference = GetComponent<MeshFilter>().mesh;
     }
 
     private void FixedUpdate()
     {
-        foreach (var magneticBody in magneticBodies)
+        if(magneticBodies.Count > 0) 
         {
-            var distance = Vector3.Distance(transform.position, magneticBody.transform.position);
-            if (distance < radius * radiusScale)
+            foreach (var magneticBody in magneticBodies)
             {
-                var distanceValue = distance / (radius * radiusScale + 0.0001f);
-                var distanceMulti = forceDistanceCurce.Evaluate(distanceValue) * magneticBody.strengthMultiplyer * strength;
+                float distance = Vector3.Distance(transform.position, magneticBody.transform.position);
+                float distanceMulti = forceDistanceCurce.Evaluate(distance) * magneticBody.strengthMultiplyer * strength;
                 magneticBody.body.AddForce((transform.position - magneticBody.transform.position).normalized * distanceMulti, forceMode);
             }
         }
@@ -61,6 +58,7 @@ public class AlienRadius_Sc : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireMesh(meshReference,transform.position,Quaternion.Euler(-90,0,0),gameObject.transform.localScale);
+        Gizmos.DrawWireMesh(meshReference,transform.position,Quaternion.Euler(-90,0,0),gameObject.transform.lossyScale);
     }
+
 }

@@ -14,4 +14,5 @@ public class MagneticBody : MonoBehaviour
     private void Start() {
         body = GetComponent<Rigidbody>();
     }
+
 }
