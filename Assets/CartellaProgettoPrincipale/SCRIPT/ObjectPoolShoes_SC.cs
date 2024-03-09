@@ -9,8 +9,14 @@ public class PoolShoes : MonoBehaviour
     [SerializeField] List<GameObject> shoesBlue;
     [SerializeField] List<GameObject> shoesYellow;
     [SerializeField] List<GameObject> shoesGrey;
-    [SerializeField] List<Vector3> spawnPointer;
+    [SerializeField] List<Transform> spawnPointer;
+    [SerializeField] GameObject baseShoes;
+    [SerializeField] Transform containerShoes;
+    public int timeSpawn;
 
+    public int maxShoesRound;
+
+    private int tempCountShoesSpawned;
 
     private void Start()
     {
@@ -36,26 +42,40 @@ public class PoolShoes : MonoBehaviour
             }
             item.gameObject.SetActive(false);
         }
+
+        StartCoroutine(SpawnShoes());
     }
 
     public GameObject GetShoes(string layer)
     {
+        GameObject tempShoes = null;
         switch (layer)
         {
             case "Blue":
-                return shoesBlue[0];
+                if(shoesBlue.Count == 0) { SpawnNewShoes(layer); }
+                tempShoes = shoesBlue[0];
+                shoesBlue.RemoveAt(0);
+                return tempShoes;
             case "Yellow":
-                return shoesYellow[0];
+                if (shoesYellow.Count == 0) { SpawnNewShoes(layer); }
+                tempShoes = shoesYellow[0];
+                shoesYellow.RemoveAt(0);
+                return tempShoes;
             case "Red":
-                return shoesRed[0];
+                if (shoesRed.Count == 0) { SpawnNewShoes(layer); }
+                tempShoes = shoesRed[0];
+                shoesRed.RemoveAt(0);
+                return tempShoes;
             case "Grey":
-                return shoesGrey[0];
+                if (shoesGrey.Count == 0) { SpawnNewShoes(layer); }
+                tempShoes = shoesGrey[0];
+                shoesGrey.RemoveAt(0);
+                return tempShoes;
             default:
                 Debug.LogError("layer non disponibile");
                 return null;
         }
     }
-
 
     public void ReturnShoes(GameObject item)
     {
@@ -80,9 +100,74 @@ public class PoolShoes : MonoBehaviour
         item.SetActive(false);
     }
 
-    //IEnumerator SpawnShoes()
-    //{
+    //call this when the list is empty
+    private void SpawnNewShoes(string layer)
+    {
+        var tempGameObject= Instantiate(baseShoes,containerShoes.transform.position,Quaternion.Euler(0,0,0),containerShoes);
+        tempGameObject.layer = LayerMask.NameToLayer(layer);
 
-    //}
+        switch (layer)
+        {
+            case "Blue":
+                shoesBlue.Add(tempGameObject);
+                break;
+            case "Yellow":
+                shoesYellow.Add(tempGameObject);
+                break;
+            case "Red":
+                shoesRed.Add(tempGameObject);
+                break;
+            case "Grey":
+                shoesGrey.Add(tempGameObject);
+                break;
+            default:
+                break;
+        }
+    }
+
+    IEnumerator SpawnShoes()
+    {
+        while(true) 
+        { 
+           yield return new WaitForSeconds(timeSpawn);
+
+           LogicChooseShoes();
+        
+        }
+    }
+
+    private void LogicChooseShoes()
+    {
+        if(tempCountShoesSpawned> maxShoesRound)
+        {
+            tempCountShoesSpawned = 0;
+        }
+
+        int tempIndex = Random.Range(0, 4);
+        string tempString;
+
+        switch (tempIndex)
+        {
+            case 0:
+                tempString= "Blue";
+                break;
+            case 1:
+                tempString = "Yellow";
+                break;
+            case 2:
+                tempString = "Red";
+                break;
+            case 3:
+                tempString = "Grey";
+                break;
+            default:
+                tempString = "";
+                break;
+           
+        }
+
+        GetShoes(tempString).SetActive(true);
+
+    }
 
 }
