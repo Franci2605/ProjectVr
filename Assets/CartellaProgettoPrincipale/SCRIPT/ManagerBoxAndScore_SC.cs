@@ -1,12 +1,16 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ManagerBoxAndScore_SC : MonoBehaviour
 {
     [SerializeField] GameObject box;
-    [SerializeField] Vector3 spawnPointer;
-    [SerializeField] TextMeshPro textScore;
+    [SerializeField] Transform spawnPointer;
+    [SerializeField] TextMeshProUGUI textScore;
+    [SerializeField] TextMeshProUGUI textTimer;
+    [SerializeField] float maxTimerInSecond;
+    public bool timerOn = false;
     int currentScore;
 
     [Tooltip("Set generic variable for gameplay")]
@@ -19,11 +23,13 @@ public class ManagerBoxAndScore_SC : MonoBehaviour
     private void Start()
     {
         SpawnBox();
+
+        timerOn = true;
     }
 
     private void SpawnBox()
     {
-        GameObject tempObjectSpawn = Instantiate(box,spawnPointer,Quaternion.Euler(0,90,0));
+        GameObject tempObjectSpawn = Instantiate(box,spawnPointer.transform.position,Quaternion.Euler(0,90,0),spawnPointer);
         CheckBox_SC tempCheckBox = tempObjectSpawn.GetComponent<CheckBox_SC>();
         tempCheckBox.managerBoxAndScore = this;
     }
@@ -34,6 +40,33 @@ public class ManagerBoxAndScore_SC : MonoBehaviour
         textScore.text = currentScore.ToString();
 
         StartCoroutine(BoxCompleteIEnumerator());
+    }
+
+    private void Update()
+    {
+        if(timerOn)
+        {
+            if(maxTimerInSecond > 0) 
+            { 
+               maxTimerInSecond -= Time.deltaTime;
+               updateTimer(maxTimerInSecond);
+            }
+            else
+            {
+                maxTimerInSecond = 0;
+                timerOn = false;
+            }
+        }
+    }
+
+    void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(maxTimerInSecond / 60);
+        float seconds = Mathf.FloorToInt(maxTimerInSecond % 60);
+
+        textTimer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public IEnumerator BoxCompleteIEnumerator()

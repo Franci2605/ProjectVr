@@ -53,7 +53,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.2
   m_Center: {x: 0, y: -0.0027994737, z: 0}
 --- !u!114 &1730406884463230368
 MonoBehaviour:
@@ -80,7 +80,7 @@ MonoBehaviour:
   disableRigidbodyOnPlace: 1
   disableGrabOnPlace: 1
   disablePlacePointOnPlace: 0
-  makePlacedKinematic: 0
+  makePlacedKinematic: 1
   placedJointLink: {fileID: 0}
   jointBreakForce: 1000
   showPlaceRequirements: 1
@@ -502,7 +502,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.2
   m_Center: {x: 0, y: -0.0027994737, z: 0}
 --- !u!114 &160143037519412500
 MonoBehaviour:
@@ -523,13 +523,13 @@ MonoBehaviour:
   placeRadius: 0.4
   radiusOffset: {x: 0, y: 0, z: 0}
   parentOnPlace: 0
-  forcePlace: 1
+  forcePlace: 0
   forceHandRelease: 1
   destroyObjectOnPlace: 0
-  disableRigidbodyOnPlace: 0
-  disableGrabOnPlace: 0
+  disableRigidbodyOnPlace: 1
+  disableGrabOnPlace: 1
   disablePlacePointOnPlace: 0
-  makePlacedKinematic: 0
+  makePlacedKinematic: 1
   placedJointLink: {fileID: 0}
   jointBreakForce: 1000
   showPlaceRequirements: 1
@@ -621,7 +621,6 @@ Transform:
   - {fileID: 6918385701363759031}
   - {fileID: 1845632946985603109}
   - {fileID: 2396182426736778728}
-  - {fileID: 7528555882588776937}
   m_Father: {fileID: 5497198645440590330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1191085314959859625
@@ -665,7 +664,7 @@ HingeJoint:
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.508225, y: 0.4830187, z: -3.7385323}
   serializedVersion: 2
-  m_UseSpring: 1
+  m_UseSpring: 0
   m_Spring:
     spring: 0
     damper: 0
@@ -688,8 +687,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 10
+  m_ConnectedMassScale: 0.2
 --- !u!114 &1974449794209256434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060a595b650563245bdcfab5935ba6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placePoint: {fileID: 1404618721885269635}
+  placePoint: {fileID: 0}
   joint: {fileID: 3000414235665845569}
 --- !u!82 &4940072267728061165
 AudioSource:
@@ -995,90 +994,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &5361114159142066958
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7528555882588776937}
-  - component: {fileID: 1404618721885269635}
-  m_Layer: 0
-  m_Name: Place Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7528555882588776937
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5361114159142066958}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.50000006, w: 0.50000006}
-  m_LocalPosition: {x: 0.905, y: 0, z: -0.751}
-  m_LocalScale: {x: 0.485408, y: 0.572088, z: 0.381392}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5209753929902668454}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
---- !u!114 &1404618721885269635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5361114159142066958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9c288aa20513c4aafa0228d4cfd80e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreMe: 0
-  showPlaceSettings: 1
-  startPlaced: {fileID: 0}
-  placedOffset: {fileID: 7528555882588776937}
-  placeRadius: 0.73
-  radiusOffset: {x: 0, y: 0, z: 0}
-  parentOnPlace: 0
-  forcePlace: 1
-  forceHandRelease: 1
-  destroyObjectOnPlace: 0
-  disableRigidbodyOnPlace: 0
-  disableGrabOnPlace: 0
-  disablePlacePointOnPlace: 1
-  makePlacedKinematic: 0
-  placedJointLink: {fileID: 1191085314959859625}
-  jointBreakForce: Infinity
-  showPlaceRequirements: 1
-  heldPlaceOnly: 0
-  nameCompareType: 0
-  placeNames:
-  - key
-  blacklistNames: []
-  onlyAllows: []
-  dontAllows: []
-  placeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  showEvents: 1
-  OnPlace:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRemove:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHighlight:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStopHighlight:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &5639824070512783189
 GameObject:
   m_ObjectHideFlags: 0
