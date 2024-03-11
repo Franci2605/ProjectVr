@@ -1,11 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ManagerBoxAndScore_SC : MonoBehaviour
 {
     [SerializeField] GameObject box;
     [SerializeField] Vector3 spawnPointer;
+    [SerializeField] TextMeshPro textScore;
+    int currentScore;
+
+    [Tooltip("Set generic variable for gameplay")]
+    [SerializeField] int timeForSpawn_NewBox;
+    [SerializeField] int amountScoreShoes_Equal;
+    [SerializeField] int amountScoreShoes_NoEqual;
+
+
 
     private void Start()
     {
@@ -19,14 +28,17 @@ public class ManagerBoxAndScore_SC : MonoBehaviour
         tempCheckBox.managerBoxAndScore = this;
     }
 
-    public void BoxComplete()
+    public void BoxComplete(bool equalLayer)
     {
+        currentScore = equalLayer ==  true ? currentScore+50 : currentScore+25;
+        textScore.text = currentScore.ToString();
+
         StartCoroutine(BoxCompleteIEnumerator());
     }
 
     public IEnumerator BoxCompleteIEnumerator()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(timeForSpawn_NewBox);
         //animation
         //add point
         SpawnBox();

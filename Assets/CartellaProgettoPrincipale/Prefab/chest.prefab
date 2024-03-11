@@ -523,11 +523,11 @@ MonoBehaviour:
   placeRadius: 0.4
   radiusOffset: {x: 0, y: 0, z: 0}
   parentOnPlace: 0
-  forcePlace: 0
+  forcePlace: 1
   forceHandRelease: 1
   destroyObjectOnPlace: 0
-  disableRigidbodyOnPlace: 1
-  disableGrabOnPlace: 1
+  disableRigidbodyOnPlace: 0
+  disableGrabOnPlace: 0
   disablePlacePointOnPlace: 0
   makePlacedKinematic: 0
   placedJointLink: {fileID: 0}

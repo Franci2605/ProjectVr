@@ -30,9 +30,9 @@ public class CheckBox_SC : MonoBehaviour
                 if(CheckBoxIsFull() && !boxComplete) 
                 {
                     boxComplete = true;
-                    managerBoxAndScore.BoxComplete();
-                    Destroy(placePointTwo.placedObject.gameObject);
-                    Destroy(placePointOne.placedObject.gameObject);
+                    managerBoxAndScore.BoxComplete(placePointTwo.placedObject.gameObject.layer == placePointOne.placedObject.gameObject.layer);
+                    PoolShoes.Instance.ReturnShoes(placePointTwo.placedObject.gameObject);
+                    PoolShoes.Instance.ReturnShoes(placePointOne.placedObject.gameObject);
                     Destroy(gameObject);
                 }
             }

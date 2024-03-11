@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class PoolShoes : MonoBehaviour
+public class PoolShoes : Singleton_SC<PoolShoes>
 {
     [SerializeField] List<GameObject> shoesRed;
     [SerializeField] List<GameObject> shoesBlue;
