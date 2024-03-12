@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class PoolShoes : Singleton_SC<PoolShoes>
 {
@@ -10,6 +9,7 @@ public class PoolShoes : Singleton_SC<PoolShoes>
     [SerializeField] List<GameObject> shoesYellow;
     [SerializeField] List<GameObject> shoesGrey;
     [SerializeField] List<Transform> spawnPointer;
+    [SerializeField] List<GameObject> AllShoes;
     [SerializeField] GameObject baseShoes;
     [SerializeField] Transform containerShoes;
     public int timeSpawn;
@@ -18,12 +18,13 @@ public class PoolShoes : Singleton_SC<PoolShoes>
 
     private int tempCountShoesSpawned;
 
+
+
     private void Start()
     {
-        var list = GameObject.FindGameObjectsWithTag("Scarpa");
-        foreach (var item in list)
+        foreach (var item in AllShoes)
         {
-            switch (LayerMask.LayerToName(item.layer))
+            switch (item.tag)
             {
                 case "Blue":
                     shoesBlue.Add(item);
@@ -46,30 +47,34 @@ public class PoolShoes : Singleton_SC<PoolShoes>
         StartCoroutine(SpawnShoes());
     }
 
-    public GameObject GetShoes(string layer)
+    public GameObject GetShoes(string tag)
     {
         GameObject tempShoes = null;
-        switch (layer)
+        switch (tag)
         {
             case "Blue":
-                if(shoesBlue.Count == 0) { SpawnNewShoes(layer); }
+                if(shoesBlue.Count == 0) { SpawnNewShoes(tag); }
                 tempShoes = shoesBlue[0];
                 shoesBlue.RemoveAt(0);
+                tempShoes.transform.position = randomSpawnPosition();
                 return tempShoes;
             case "Yellow":
-                if (shoesYellow.Count == 0) { SpawnNewShoes(layer); }
+                if (shoesYellow.Count == 0) { SpawnNewShoes(tag); }
                 tempShoes = shoesYellow[0];
                 shoesYellow.RemoveAt(0);
+                tempShoes.transform.position = randomSpawnPosition();
                 return tempShoes;
             case "Red":
-                if (shoesRed.Count == 0) { SpawnNewShoes(layer); }
+                if (shoesRed.Count == 0) { SpawnNewShoes(tag); }
                 tempShoes = shoesRed[0];
                 shoesRed.RemoveAt(0);
+                tempShoes.transform.position = randomSpawnPosition();
                 return tempShoes;
             case "Grey":
-                if (shoesGrey.Count == 0) { SpawnNewShoes(layer); }
+                if (shoesGrey.Count == 0) { SpawnNewShoes(tag); }
                 tempShoes = shoesGrey[0];
                 shoesGrey.RemoveAt(0);
+                tempShoes.transform.position = randomSpawnPosition();
                 return tempShoes;
             default:
                 Debug.LogError("layer non disponibile");
@@ -77,9 +82,14 @@ public class PoolShoes : Singleton_SC<PoolShoes>
         }
     }
 
+    private Vector3 randomSpawnPosition()
+    {
+        return spawnPointer[Random.Range(0, spawnPointer.Count)].position;
+    }
+
     public void ReturnShoes(GameObject item)
     {
-        switch (LayerMask.LayerToName(item.layer))
+        switch (item.tag)
         {
             case "Blue":
                 shoesBlue.Add(item);
@@ -98,15 +108,16 @@ public class PoolShoes : Singleton_SC<PoolShoes>
         }
 
         item.SetActive(false);
+        item.transform.position=containerShoes.transform.position;
     }
 
     //call this when the list is empty
-    private void SpawnNewShoes(string layer)
+    private void SpawnNewShoes(string tag)
     {
         var tempGameObject= Instantiate(baseShoes,containerShoes.transform.position,Quaternion.Euler(0,0,0),containerShoes);
-        tempGameObject.layer = LayerMask.NameToLayer(layer);
+        tempGameObject.tag = tag;
 
-        switch (layer)
+        switch (tag)
         {
             case "Blue":
                 shoesBlue.Add(tempGameObject);
@@ -127,13 +138,15 @@ public class PoolShoes : Singleton_SC<PoolShoes>
 
     IEnumerator SpawnShoes()
     {
-        while(true) 
-        { 
-           yield return new WaitForSeconds(timeSpawn);
+        yield return new WaitForSeconds(timeSpawn);
 
-           LogicChooseShoes();
-        
+        LogicChooseShoes();
+
+        if(ManagerBoxAndScore_SC.Instance.timerOn)
+        {
+            StartCoroutine(SpawnShoes());
         }
+        
     }
 
     private void LogicChooseShoes()
@@ -163,11 +176,9 @@ public class PoolShoes : Singleton_SC<PoolShoes>
             default:
                 tempString = "";
                 break;
-           
         }
 
         GetShoes(tempString).SetActive(true);
-
     }
 
 }

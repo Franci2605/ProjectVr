@@ -10,13 +10,7 @@ namespace Autohand.Demo
 
         public HingeJoint joint;
 
-        public void Start()
-        {
-            placePoint.OnPlaceEvent += (PlacePoint point, Grabbable grab) => {
-                Unlock();
-                grab.body.detectCollisions = false;
-            };
-        }
+ 
 
         public void Unlock()
         {

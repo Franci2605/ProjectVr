@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Scarpa
+  - Blue
+  - Yellow
+  - Grey
+  - Red
   layers:
   - Default
   - TransparentFX

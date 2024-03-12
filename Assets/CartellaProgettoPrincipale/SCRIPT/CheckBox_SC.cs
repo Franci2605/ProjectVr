@@ -25,12 +25,12 @@ public class CheckBox_SC : MonoBehaviour
     {
         if(jointCheck != null) 
         {
-            if(jointCheck.gameObject.transform.rotation.eulerAngles.z<5)
+            if(jointCheck.gameObject.transform.rotation.eulerAngles.z<10)
             {
                 if(CheckBoxIsFull() && !boxComplete) 
                 {
                     boxComplete = true;
-                    managerBoxAndScore.BoxComplete(placePointTwo.placedObject.gameObject.layer == placePointOne.placedObject.gameObject.layer);
+                    managerBoxAndScore.BoxComplete(placePointTwo.placedObject.gameObject.tag == placePointOne.placedObject.gameObject.tag);
                     PoolShoes.Instance.ReturnShoes(placePointTwo.placedObject.gameObject);
                     PoolShoes.Instance.ReturnShoes(placePointOne.placedObject.gameObject);
                     Destroy(gameObject);

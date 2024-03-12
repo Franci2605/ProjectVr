@@ -3,7 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ManagerBoxAndScore_SC : MonoBehaviour
+public class ManagerBoxAndScore_SC : Singleton_SC<ManagerBoxAndScore_SC>
 {
     [SerializeField] GameObject box;
     [SerializeField] Transform spawnPointer;

@@ -77,15 +77,15 @@ MonoBehaviour:
   forcePlace: 0
   forceHandRelease: 1
   destroyObjectOnPlace: 0
-  disableRigidbodyOnPlace: 1
-  disableGrabOnPlace: 1
+  disableRigidbodyOnPlace: 0
+  disableGrabOnPlace: 0
   disablePlacePointOnPlace: 0
   makePlacedKinematic: 1
   placedJointLink: {fileID: 0}
-  jointBreakForce: 1000
+  jointBreakForce: 2000
   showPlaceRequirements: 1
   heldPlaceOnly: 1
-  nameCompareType: 1
+  nameCompareType: 0
   placeNames:
   - Scarpa
   blacklistNames: []
@@ -526,15 +526,15 @@ MonoBehaviour:
   forcePlace: 0
   forceHandRelease: 1
   destroyObjectOnPlace: 0
-  disableRigidbodyOnPlace: 1
-  disableGrabOnPlace: 1
+  disableRigidbodyOnPlace: 0
+  disableGrabOnPlace: 0
   disablePlacePointOnPlace: 0
   makePlacedKinematic: 1
   placedJointLink: {fileID: 0}
-  jointBreakForce: 1000
+  jointBreakForce: 2000
   showPlaceRequirements: 1
   heldPlaceOnly: 1
-  nameCompareType: 1
+  nameCompareType: 0
   placeNames:
   - Scarpa
   blacklistNames: []
@@ -687,8 +687,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
-  m_MassScale: 10
-  m_ConnectedMassScale: 0.2
+  m_MassScale: 5
+  m_ConnectedMassScale: 0.1
 --- !u!114 &1974449794209256434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,7 +715,7 @@ MonoBehaviour:
   heldNoFriction: 1
   maintainGrabOffset: 0
   ignoreWeight: 0
-  parentOnGrab: 0
+  parentOnGrab: 1
   throwPower: 1
   jointBreakForce: 6000
   showAdvancedSettings: 1
