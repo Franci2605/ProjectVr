@@ -134,6 +134,8 @@ public class PoolShoes : Singleton_SC<PoolShoes>
             default:
                 break;
         }
+
+        AllShoes.Add(tempGameObject);
     }
 
     IEnumerator SpawnShoes()

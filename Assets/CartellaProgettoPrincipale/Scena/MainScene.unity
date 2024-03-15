@@ -4786,7 +4786,7 @@ MonoBehaviour:
   spawnPointer: {fileID: 2023675481}
   textScore: {fileID: 1391999575}
   textTimer: {fileID: 1419058922}
-  maxTimerInSecond: 120
+  maxTimerInSecond: 240
   timerOn: 0
   timeForSpawn_NewBox: 1
   amountScoreShoes_Equal: 50
@@ -5439,7 +5439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
