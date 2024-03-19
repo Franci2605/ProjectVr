@@ -9,6 +9,12 @@ TagManager:
   - Yellow
   - Grey
   - Red
+  - ModelOne_V_1
+  - ModelOne_V_2
+  - ModelTwo_V_1
+  - ModelTwo_V_2
+  - ModelThree_V_1
+  - ModelThree_V_2
   layers:
   - Default
   - TransparentFX
