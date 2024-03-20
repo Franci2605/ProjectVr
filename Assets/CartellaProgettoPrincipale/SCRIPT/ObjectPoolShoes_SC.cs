@@ -10,7 +10,8 @@ public class PoolShoes : Singleton_SC<PoolShoes>
     [SerializeField] List<GameObject> ModelTwo_V_2;
     [SerializeField] List<GameObject> ModelThree_V_1;
     [SerializeField] List<GameObject> ModelThree_V_2;
-    [SerializeField] List<GameObject> baseShoes;
+    [SerializeField] GameObject baseShoes;
+    [SerializeField] List<GameObject> modelsShoes;
     [SerializeField] List<Transform> spawnPointer;
     [SerializeField] List<GameObject> AllShoes;
     [SerializeField] Transform containerShoes;
@@ -164,8 +165,11 @@ public class PoolShoes : Singleton_SC<PoolShoes>
                 break;
         }
 
-        GameObject tempGameObject= Instantiate(baseShoes[baseShoesIndex],containerShoes.transform.position,Quaternion.Euler(0,0,0),containerShoes);
+        GameObject tempGameObject= Instantiate(baseShoes,containerShoes.transform.position,Quaternion.Euler(0,0,0),containerShoes);
         tempGameObject.tag = tag;
+        tempGameObject.GetComponent<MeshFilter>().mesh = modelsShoes[baseShoesIndex].GetComponent<MeshFilter>().sharedMesh;
+        tempGameObject.GetComponent<MeshRenderer>().material = modelsShoes[baseShoesIndex].GetComponent<MeshRenderer>().sharedMaterial;
+        tempGameObject.GetComponent<MeshCollider>().sharedMesh = modelsShoes[baseShoesIndex].GetComponent<MeshFilter>().sharedMesh;
 
         switch (tag)
         {
